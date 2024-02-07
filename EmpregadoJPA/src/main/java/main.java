@@ -82,7 +82,7 @@ public class main {
                       verificar=false;
                       while (verificar=false){
                           try {
-                              System.out.println("Digite o npúmero do gerente: ");
+                              System.out.println("Digite o número do gerente: ");
                               mgr = input.nextFloat();
                               if (mgr<0){
                                   throw new Exception();
@@ -100,7 +100,65 @@ public class main {
                       }
                       verificar=false;
                       while (verificar=false){
-                          System.out.println("Digite o");
+                          while (verificar=false){
+                            try {
+                                System.out.println("Digite o dia da sua contratação: ");
+                                int dia = input.nextInt();
+                                if (dia<1||dia>31){
+                                    throw new Exception();
+                                }
+                                verificar=true;
+                            }catch (InputMismatchException ime){
+                                System.out.println("\u001b[31mOps,algo deu errado,digite apenas números: \u001b[m");
+                                input.nextLine();
+                                verificar = false;
+                            }catch (Exception e){
+                                System.out.println("\u001b[31mOps,algo deu errado,digite um dia válido:  \u001b[m");
+                                input.nextLine();
+                                verificar = false;
+                            }
+                          }
+                          verificar=false;
+                          while (verificar=false){
+                              try {
+                                  System.out.println("Digite o mês da sua contratação: ");
+                                  int mes = input.nextInt();
+                                  if (mes1||mes>12){
+                                      throw new Exception();
+                                  }
+                                  verificar=true;
+                              }catch (InputMismatchException ime){
+                                  System.out.println("\u001b[31mOps,algo deu errado,digite apenas números: \u001b[m");
+                                  input.nextLine();
+                                  verificar = false;
+                              }catch (Exception e){
+                                  System.out.println("\u001b[31mOps,algo deu errado,digite um mês válido:  \u001b[m");
+                                  input.nextLine();
+                                  verificar = false;
+                              }
+                          }
+                          verificar=false;
+                          while (verificar=false){
+                              try {
+                                  System.out.println("Digite o ano da sua contratação: ");
+                                  int ano = input.nextInt();
+                                  if (ano<1950||ano>2024){
+                                      throw new Exception();
+                                  }
+                                  verificar=true;
+                              }catch (InputMismatchException ime){
+                                  System.out.println("\u001b[31mOps,algo deu errado,digite apenas números: \u001b[m");
+                                  input.nextLine();
+                                  verificar = false;
+                              }catch (Exception e){
+                                  System.out.println("\u001b[31mOps,algo deu errado,digite um ano válido:  \u001b[m");
+                                  input.nextLine();
+                                  verificar = false;
+                              }
+                          }
+
+
+
                       }
 
 
