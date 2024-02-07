@@ -103,8 +103,39 @@ public boolean inserir(float empno, String ename, String job, float mgr, Date hi
         }finally {
             em.close();
         }
+    }
+
+    public Empregado buscarPorNum(float empno){
+        EntityManager em = emf.createEntityManager();
+        try {
+            Empregado emp=em.find(Empregado.class,empno);
+            return emp;
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }finally {
+            em.close();
+        }
 
 
     }
+
+    public List<Empregado> buscarPorTrabalho(String job){
+        EntityManager em = emf.createEntityManager();
+        try{
+            Query query = em.createQuery("Select emp from Empregado emp where emp.job = :trabalho");
+            query.setParameter("trabalho",job);
+            List<Empregado>  empregados =query.getResultList();
+            System.out.println(empregados);
+            return empregados;
+        }catch (Exception e){
+            return null;
+        }finally {
+            em.close();
+        }
+    }
+
+
+
 
 }
