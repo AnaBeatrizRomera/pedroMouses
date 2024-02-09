@@ -83,6 +83,6 @@ private float deptno;
 
     @Override
     public String toString() {
-        return "\nNome: "+ename+"\nCargo: "+job+"\nGerente: "+mgr+"\nData de contratação: "+hiredate+"\nSalário: "+sal+"\nComissão: "+comm+"\nNúmero do departamento: "+deptno;
+        return "\nNúmero do empregado: "+empno+"\nNome: "+ename+"\nCargo: "+job+"\nGerente: "+mgr+"\nData de contratação: "+hiredate+"\nSalário: "+sal+"\nComissão: "+comm+"\nNúmero do departamento: "+deptno;
     }
 }
