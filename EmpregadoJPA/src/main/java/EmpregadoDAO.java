@@ -1,9 +1,8 @@
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
-import jakarta.persistence.Query;
+import jakarta.persistence.*;
+import org.hibernate.exception.ConstraintViolationException;
 
 import java.sql.Date;
+import java.sql.SQLException;
 import java.util.List;
 
 public class EmpregadoDAO {
@@ -15,7 +14,7 @@ public class EmpregadoDAO {
     }
     public void encerrar(){emf.close(); }
 
-public boolean inserir(float empno, String ename, String job, float mgr, Date hiredate, float sal, float comm, float deptno){
+public int inserir(float empno, String ename, String job, float mgr, Date hiredate, float sal, float comm, float deptno){
     EntityManager em = emf.createEntityManager();
     try {
         Empregado emp = new Empregado();
@@ -30,13 +29,16 @@ public boolean inserir(float empno, String ename, String job, float mgr, Date hi
         em.getTransaction().begin();
         em.persist(emp);
         em.getTransaction().commit();
-        return true;
-    }catch (Exception e){
-        e.printStackTrace();
-        return false;
-    }finally {
+
+    }catch (PersistenceException pe){
+        if (pe instanceof ConstraintViolationException){
+            System.err.println("Chave duplicada encontrada: "+ pe.getMessage());
+            return 1;
+        }
+    } finally{
         em.close();
     }
+    return 0;
 }
 
  public boolean alterarNome(String nome, float empno){

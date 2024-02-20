@@ -212,9 +212,9 @@ public class main {
                         }
 
                     }
-                    funcionou = conexao.inserir(empno, ename, job, mgr, new Date(dia,mes,ano), sal, comm, deptno);
-                    if (funcionou) {
-                        System.out.println("Inserido com sucesso!");
+                    int funcionou1 = conexao.inserir(empno, ename, job, mgr, new Date(dia,mes,ano), sal, comm, deptno);
+                    if (funcionou1==1) {
+                        System.out.println("A chave primária já existe1");
                     } else {
                         System.out.println("Não foi possível inserir!");
                     }
