@@ -21,3 +21,21 @@ jobs:
       with:
         java-version: '11'
         distribution: 'temurin'
+    - name: compilação babilonica
+      run: javac src/Main.java
+    - name: rodada de milhoes
+      run: java src/Main.java
+      
+    - name: Docker Build & Push Action
+      uses: mr-smithers-excellent/docker-build-push@v6.4
+      with:
+        # Name of the Docker image
+        image: anabeatrizromera/java_pessoas
+        # gerando versao faraonica
+        tags: MAIN-${{ github.run_number }}
+        # Target Docker registry
+        registry: docker.io 
+        # Location of Dockerfile, if not Dockerfile in root directory
+        dockerfile: dockerfile
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
